@@ -27,7 +27,7 @@ namespace sdds
     {
         m_size = size;
         m_noOfEggs = noOfEggs;
-        m_jumbo = jumboSize; // 필요한가
+        m_jumbo = jumboSize; 
         setBroken();
     }
 
@@ -39,7 +39,7 @@ namespace sdds
     {
         if (operator bool())
         {
-            int cartonWidth = m_size == 6 ? 3 : 6;
+            int cartonWidth = m_size == 6 ? 3 : 6; //(조건)? A : B; -> 조건이 맞으면 A, 아니면 B
             for (int i = 0; i < m_size; i++)
             {
                 ostr << ((i < m_noOfEggs) ? (m_jumbo ? 'O' : 'o') : '~');
