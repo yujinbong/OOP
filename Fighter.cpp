@@ -47,9 +47,9 @@ namespace sdds {
         //Competition* ptr;?
         ptr = new Fighter[myCompetition.numfighters + 1];
         //loop 설정하기
-        for(int i = 0; i < myCompetition.numfighters; i++) {
+      /*  for(int i = 0; i < myCompetition.numfighters; i++) {
             ptr[i] = myCompetition.fighters[i]; // check the list
-        }
+        }*/
         int i = 0;
         while (i < myCompetition.numfighters) {
             strcpy(ptr[i].name, myCompetition.fighters[i].name);
