@@ -11,8 +11,11 @@ int i;
 int nonZero=0;
 int greaterThan10=0;
 for(i=0; i<13; i++){
-    if(a[i] !=0) nonZero++;
-    if(a[i] >10) greaterThan10++;
+   /* if(a[i] !=0) nonZero++;
+    if(a[i] >10) greaterThan10++;*/
+   nonZero += !!a[i];
+   greaterThan10 += (a[i] > 10); // c++ style!
+
 }
 
 cout << "Number of nonzeros in a is : " << nonZero << endl;
