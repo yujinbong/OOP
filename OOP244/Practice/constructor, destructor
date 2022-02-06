@@ -1,0 +1,66 @@
+#include<iostream>
+#include<cstring>
+
+using namespace std;
+
+class A
+{
+    const int m_id=0;
+    char *m_name;
+
+    public:
+        A() : m_id(0)  // default
+        {
+            //m_num=0;
+            m_name=new char[10];
+            strcpy(m_name,"noname");
+            cout << "default constructor : " << m_id <<"[" << m_name << "]" <<endl;
+        }
+
+        A(int num,const char name[]=""):m_id(num) 
+        {
+            // m_num=num;
+            m_name=new char[10];
+            strcpy(m_name,name);
+            cout << "constructor : " << m_id <<"[" << m_name << "]" <<endl;
+        }
+
+        ~A()   //메모리 반납을 책임짐 
+        {
+            cout << "destructor : " << m_id <<"[" << m_name << "]" <<endl;
+            delete [] m_name;
+        }    
+};
+
+
+
+int main()
+{
+    {
+        cout  << "-------------------" << endl;
+        A a0;
+        A a(1,"a1");
+    }
+    {
+        cout  << "-------------------" << endl;
+        A b(2);  // default argument 활용 됨
+        A c(3);
+    }
+    {
+        cout  << "-------------------" << endl;
+        A arr[3]={
+            {},
+            {1,"arr1"},
+            {2}
+        };
+    }
+    {
+        cout  << "-------------------" << endl;
+        A *arr=new A[3]; //  동적할당
+
+        delete [] arr;//  동적할당 반납을 꼭 해줘야함 
+    }
+
+	return 0;
+}
+
