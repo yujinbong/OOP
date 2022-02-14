@@ -14,11 +14,11 @@
 #include <string.h>
 #include <stdio.h>
 
-#define MAX_NAME_LEN 10 // 의미 없음 그냥 문자열 10까지 받아들일수 있다는 뜻으로 받아들이자!
+#define MAX_NAME_LEN 10 
 #define NUM_ACTIVITY_NAMES 5
 #define MAX_ACTIVITY_NAME_LEN 10 
 #define MAX_NUM_PARTICIPANTS 10
- // 구조체 만들땐 항상 그림을 머릿속에 생각하고 구성하자.
+
 
 struct Date {
     int year;
@@ -26,23 +26,23 @@ struct Date {
     int day;
 };
 struct Activity {
-    struct Date date;  // 액티비티 안에 date를 포함시킨다.
+    struct Date date;  
     double distance;
     char activityType;
 };
 
-struct Participant { // 최종 Participant안에 모든것을 포함시킨다.
+struct Participant { 
     int numActivities;
     char name[MAX_NAME_LEN + 1];
-    struct Activity activities[NUM_ACTIVITY_NAMES]; // 구조체 완성
+    struct Activity activities[NUM_ACTIVITY_NAMES]; 
 };
 
-struct NameDist { // 나중에 sort를 하기위해 따로 만든 NameDist구조체
-    char name[MAX_NAME_LEN + 1]; // +1을 하는 이유는 문자열 끝에 null을 설정하기 위해서이다.
+struct NameDist { // NameDist structure for sorting later
+    char name[MAX_NAME_LEN + 1]; //
     double dist;
 };
 
-// prototypes 프로토타입을 설정해야하는 이유는? 다시한번 확인하기!! 확실해질때까지
+
 int zeller(const struct Date* date) ;
 char findString(const char activNames[][MAX_ACTIVITY_NAME_LEN + 1], int count, char* activity) ;
 int findParticipant(struct Participant participants[], int count, char name[]) ;
