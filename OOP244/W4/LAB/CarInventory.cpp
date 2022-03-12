@@ -30,17 +30,6 @@ namespace sdds {
 
 
     CarInventory::CarInventory(const char* type, const char* brand, const char* model, int year, int code, double price){
-        /*이 생성자는 C 문자열 인수의 값을 해당 특성에 동적으로 유지하고 검증을 통과한 경우 나머지 특성 값을 설정합니다. 그렇지 않으면 정보가 재설정됩니다(void resetInfo() 참조).
-        이 생성자를 사용하여 인스턴스화할 때 연도, 코드 또는 가격 인수가 제공되지 않은 경우 인수에 대한 기본값을 사용하여 2022년, 100 및 1로 설정됩니다.
-        유효한 CarInventory 멤버 변수 값입니다.
-        type, not null
-        brand, not null
-        model, not null
-        year >= 1990
-        code, three digit integer
-        prince > 0
-        */
-        //cout << __FUNCTION__ << __LINE__<< endl;
         setInfo(type,brand,model,year,code,price);
     }
 
