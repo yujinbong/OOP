@@ -1,0 +1,9 @@
+Workshop #4: Constructors, Destructors, and the this object
+Version 0.9 (Under review)
+Learning Outcomes
+Upon successful completion of this workshop, you will have demonstrated the abilities to:
+
+Create default and overloaded constructors
+Create destructors
+Initialize class member variables
+Release member pointers
