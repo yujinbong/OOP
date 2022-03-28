@@ -1,0 +1,11 @@
+Workshop #2: References, Dynamic Memory, Function Overloading
+Version 0.9
+In this workshop, you will use File scope variables, Reuse your previously developed modules and overload functions, Dynamically allocate, reallocate (resize) and deallocate (free) memory.
+
+Learning Outcomes
+Upon successful completion of this workshop, you will have demonstrated the abilities to:
+
+Overload functions.
+Dynamic Memory Allocation and Management
+Use References to pass back information through arguments of a function.
+Use default value for arguments of a function.
