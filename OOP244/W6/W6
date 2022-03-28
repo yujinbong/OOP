@@ -1,0 +1,13 @@
+Workshop #6: Classes and resources, IO operators
+version 1.1 (added tester output for part 2 and fixed a bug in main.cpp part 1)
+version 1.2 (removed irrelevant instruction in data entry)
+In this workshop, you will implement a class with overloaded constructors. Then you will overload IO operators that will be used to read and write on the screen and files.
+
+Learning Outcomes
+Upon successful completion of this workshop, you will have demonstrated the abilities to:
+
+define and implement multiple constructors
+define and implement the rule of three
+Read formatted data using istream
+Write formatted data using ostream
+Overload the extraction and insertion operators for I/O, using iostream
