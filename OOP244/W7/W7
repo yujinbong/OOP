@@ -1,0 +1,11 @@
+Workshop #7: Derived Classes
+In this workshop, you will work with classes that make up a hierarchical structure. The base or parent class will be called Container that encapsulates a Container with a specific capacity in CCs, then the child class Pack that is a Container of several smaller units (like 24 Cans of soup or 12 bottles of Wine). In addition to this hierarchy, we will define custom input/output operators for these classes.
+
+Learning Outcomes
+Upon successful completion of this workshop, you will have demonstrated the abilities to:
+
+Inherit a derived class from a base class
+Shadow the base class member functions with the derived class member functions
+Access shadowed member functions that are defined in a base class
+Utilize custom input/output operators with these classes
+Describe to your instructor what you have learned in completing this workshop
