@@ -1,0 +1,11 @@
+Workshop #1: Modules
+Version 1.1 (Fixed description: Renamed incorrect data file name and app name from Shopping list to Word Stat)
+In process of doing your first workshop, in part 1 you are to sub-divide a program into modules, compile each module separately and construct an executable from the results of each compilation. In Part 2 (DIY) you are to write a modular program based on your knowledge of ipc144 subject.
+
+Learning Outcomes
+Upon successful completion of this workshop, you will have demonstrated the abilities to:
+
+organize source code into modules, using header and implementation files;
+compile and link modular programs;
+distinguish the contents of a header and an implementation file;
+describe to your instructor what you have learned in completing this workshop.
