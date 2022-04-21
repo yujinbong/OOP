@@ -1,0 +1,13 @@
+Workshop #9: Derived Classes and Resources
+Version 1.1 (added #include <fstream> to main.cpp)
+Version 1.2 (Corrected saveHtml() filename in main_prof.cpp at submission time)
+In this workshop, you are to code/complete two classes:
+
+Text: A class that can read the contents of a text file into memory and insert it into ostream.
+HtmlText: A Text Class that has a title and can insert the text contents of the class into ostream in simple HTML format.
+Learning Outcomes
+Upon successful completion of this workshop, you will have demonstrated the abilities to:
+
+Apply the rule of three and its derived class.
+Use your acquired skills throughout the semester to read a file into dynamically allocated memory.
+describe what you have learned in completing this workshop
