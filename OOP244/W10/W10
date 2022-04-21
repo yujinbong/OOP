@@ -1,0 +1,13 @@
+Workshop #10: Function Templates
+Version 1.0
+
+In this workshop, you are to code two function templates:
+
+"select": to select several elements out of an array to if they match another.
+"printCollection": print the content of a class template
+Learning Outcomes
+Upon successful completion of this workshop, you will have demonstrated the abilities to:
+
+Code function templates
+Use class templates
+Describe what you have learned in completing this workshop
