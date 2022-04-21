@@ -1,0 +1,155 @@
+/*
+Final project Milestone 3
+ Filename: Date.cpp
+name: Yujin Bong
+student ID :147525208
+SECTION : NDD
+PROFESSOR : Arezoo.tony
+Date: 2022/03/26
+Author: Fardad Soleimanloo   2022-02-28
+Revision History
+I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.*/
+
+#define _CRT_SECURE_NO_WARNINGS
+
+#include <iostream>
+#include <ctime>
+#include <cstring>
+#include "Utils.h"
+
+
+using namespace std;
+namespace sdds {
+    // The ut object of type Utils that is accessible to any file including "Utils.h" to call the Utils
+    // methods
+    Utils ut;
+
+    void Utils::testMode(bool testmode) {
+        m_testMode = testmode;
+    }
+
+    void Utils::getSystemDate(int *year, int *mon, int *day) {
+        if (m_testMode) {
+            if (day) *day = sdds_testDay;
+            if (mon) *mon = sdds_testMon;
+            if (year) *year = sdds_testYear;
+        } else {
+            time_t t = std::time(NULL);
+            tm lt = *localtime(&t);
+            if (day) *day = lt.tm_mday;
+            if (mon) *mon = lt.tm_mon + 1;
+            if (year) *year = lt.tm_year + 1900;
+        }
+    }
+
+    int Utils::daysOfMon(int month, int year) const {
+        int days[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, -1};
+        int mon = (month >= 1 && month <= 12 ? month : 13) - 1;
+        return days[mon] + int((mon == 1) * ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0));
+    }
+
+    void Utils::alocpy(char *&destination, const char *source){
+        destination=new char[strlen(source)+1];
+        strcpy(destination,source);
+    }
+
+
+    int Utils::getint(const char *prompt)
+    {
+        int num;
+        if(prompt)
+            cout << prompt;
+        while(true)
+        {
+            cin >> num;
+            if(!cin)
+            {
+                cout << "Invalid Integer, retry: ";
+                cin.clear();
+                cin.ignore(1000, '\n');
+            }else
+            {
+                break;
+            }
+        }
+        return num;
+    }
+
+
+
+
+    int Utils::getint(int min, int max, const char *prompt, const char *errMsg)
+    {
+        int num;
+        if(prompt)
+            cout << prompt;
+
+        while(true)
+        {
+            num=getint(nullptr);
+            if(num>=min && num<=max)
+                break;
+            cout << errMsg;
+        }
+        return num;
+    }
+
+
+
+    double Utils::getdouble(const char *prompt)
+    {
+        double num;
+        if(prompt)
+            cout << prompt;
+        while(true)
+        {
+            cin >> num;
+            if(!cin)
+            {
+                cout << "Invalid number, retry: ";
+                cin.clear();
+                cin.ignore(1000, '\n');
+            }else
+            {
+                break;
+            }
+        }
+        return num;
+    }
+
+
+
+
+    double Utils::getdouble(double min, double max, const char *prompt, const char *errMsg)
+    {
+        double num;
+        if(prompt)
+            cout << prompt;
+
+        while(true)
+        {
+            num=getdouble(nullptr);
+            if(num>=min && num<=max)
+                break;
+            cout << errMsg;
+        }
+        return num;
+    }
+
+
+    int Utils:: getFileLength(istream& is){
+        int len{};
+        if (is) {
+            // save the current read position
+            streampos cur = is.tellg();
+            // go to the end
+            is.seekg(0, ios::end);
+            // let what is the positions (end position = size)
+            len = is.tellg();
+            // now go back to where you were.
+            is.seekg(cur);
+        }
+        return len;
+    }
+
+}
