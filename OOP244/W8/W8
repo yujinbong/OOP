@@ -1,0 +1,19 @@
+Workshop #8: Virtual functions and Abstract base classes
+In this workshop, you will create a hierarchy of classes to practice and understand the role of virtual functions in inheritance. The workshop consists of 4 classes:
+
+Shape; encapsulates a shape that can be drawn on the screen
+(An interface, that is an abstract base class with only pure virtual functions)
+LblShape; encapsulates a shape that can be labelled
+(An abstract base class that represents a labelled shape)
+Line; encapsulates a horizontal line on a screen with the label
+(this concrete class draws a labelled line)
+Rectangle; encapsulates a rectangle on the screen that can be labelled
+(this concrete class draws a rectangle with a label inside).
+Learning Outcomes
+Upon successful completion of this workshop, you will have demonstrated the abilities to:
+
+define pure virtual functions
+create abstract base classes
+implement behaviour using virtual functions
+explain the difference between an abstract base class and a concrete class
+describe what you have learned in completing this workshop
