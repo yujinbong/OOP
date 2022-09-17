@@ -18,13 +18,13 @@ namespace sdds {
 	{
 		return m_title;
 	}
-
+	
 	const std::string& sdds::Book::country() const
 	{
 		return m_country;
 	}
 
-	void Book::updatePrice(double price)
+	void Book::setPrice(double price)
 	{
 		m_price = price;
 	}
@@ -43,11 +43,11 @@ namespace sdds {
 	{
 		//Miguel de Cervantes,     Don Quixote,     Spain,    9.99,    1612,   The story follows a Hidalgo, Alonso Quixano, who proves that chivalry will in fact never die.
 
-		std::string temp = strBook; //받아온 문자열을 temp에 임시로 저장한다.
-		std::string author = temp.substr(0, temp.find(',')); // ','을 지우기 위해 substr을 이용하여 0번째 인덱스부터 find함수로 ','을 찾아내어 문자열을 추출한 후 autor 변수에 저장한다.
-		trim(author); //만든 trim 함수로 author변수의 앞뒤의 공백을 지운다.
+		std::string temp = strBook;
+		std::string author = temp.substr(0, temp.find(','));
+		trim(author);
 
-		temp.erase(0, temp.find(',') + 1); // ','뒤까지 문자를 지운다.
+		temp.erase(0, temp.find(',') + 1);
 
 		std::string title = temp.substr(0, temp.find(','));
 		trim(title);
@@ -86,8 +86,8 @@ namespace sdds {
 
 		os << std::setw(20) << std::right << book.m_author << " | ";
 		os << std::setw(22) << book.m_title << " | ";
-		os << std::setw(5) << book.m_country << " | ";
-		os << std::setw(4) << book.m_year << " | ";
+		os << std::setw(5) <<  book.m_country << " | ";
+		os << std::setw(4) <<  book.m_year << " | ";
 		os << std::setw(6) << std::fixed << std::setprecision(2) << book.m_price << " | ";
 		os << book.m_description << std::endl;
 		return os;
