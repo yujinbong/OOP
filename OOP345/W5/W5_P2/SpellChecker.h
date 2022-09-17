@@ -1,5 +1,4 @@
-
- // Workshop 5 - Functions and Error Handling
+// Workshop 5 - Functions and Error Handling
 // 2020/02 - Cornel
 // 2021/01/19 - Chris
 // 2021/02/12 - Cornel
@@ -16,13 +15,13 @@ namespace sdds {
 		
 		std::string m_badWords[6]{};
 		std::string m_goodWords[6]{};
+		//std::string m_description[6]{};
 		size_t m_replaceCounter[6]{};
-		std::size_t replace(std::string& inout, std::string badwords, std::string goodwords);
+		std::size_t replace_all(std::string& inout, std::string what, std::string with);
 
 	public:
-		SpellChecker(const char* filename); // recevies the address of a C-style
-
-		void operator()(std::string& text); // count how many times each misspelled word has been replaced.
+		SpellChecker(const char* filename);
+		void operator()(std::string& text);
 		void showStatistics(std::ostream& out) const;
 
 
