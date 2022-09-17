@@ -1,14 +1,28 @@
-#include <iomanip>
+// Workshop 3 - Templates
+// 2022/01/28 - If this code works, it was created by Cornel
+//            - If it doesn't work, I don't know who wrote it.
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+#include <iostream>
 #include "Pair.h"
-using namespace std;
+#include <iomanip>
+
 namespace sdds {
-	bool Pair::operator==(const Pair& other) const
+
+	bool Pair::operator==(const Pair& p) const
 	{
-		return m_key == other.m_key;
+		return m_key == (p.m_key); 
 	}
-	std::ostream& operator<<(std::ostream& os, const Pair& pair)
+
+	std::ostream& operator<<(std::ostream& os, const Pair& p)
 	{
-		os << setw(20) << right << pair.m_key << ": " << pair.m_value;
+
+	/*       static memory: memory allocated during the compilation time*/
+		if (os) {
+			os <<std::setfill(' ')<< std::setw(20) << std::right << p.m_key << ": " << p.m_value;
+		}
+
 		return os;
 	}
+
+
 }
