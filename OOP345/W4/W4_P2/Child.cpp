@@ -1,3 +1,11 @@
+// w4_p2.cpp - Containers
+// 2021/12/02 - Miguel
+// 2022/02/02 - Cornel
+// Professor    : Chris Szalwinski
+// Student      : Yujin Bong
+// Student ID   : 147-525-208
+// SECTIOMN     : NEE 
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 #include "Child.h"
 
 namespace sdds {
@@ -10,28 +18,27 @@ namespace sdds {
 		m_toyArray = new const Toy * [m_arraySize];
 		for (size_t i = 0; i < m_arraySize; i++)
 		{
-			m_toyArray[i] = new Toy (*(m_toyArray[i]));
+			m_toyArray[i] = new Toy(*(toys[i]));   
 		}
 	}
 
 	Child& sdds::Child::operator=(const Child& other)
-	{   //ºó»óÅÂ·Î ¸¸µé±â À§ÇØ¼­´Â Toy*¿Í Toy µÑÀÇ ¿ä¼Ò ¸ðµÎ Áö¿öÁà¾ßÇÏ±â¶§¹®¿¡,
-		//for¹®¿¡¼­ÇÏ´Â°Ç -> Toy¿ä¼Ò
-		//delete[]´Â Toy* ¹è¿­À» À§ÇØ »èÁ¦
-        //copyÀÇ °æ¿ì¿¡´Â toyÀÇ ¿ä¼Ò ÇÏ³ªÇÏ³ª¸¦ º¹»çÇØÁà¾ßÇÏ±â¶§¹®¿¡ µ¿ÀûÇÒ´çÀ» ÇØÁØ ÈÄ for¹®À» ÅëÇÏ¿© °ªÀ» ÇÏ³ªÇÏ³ª º¹»çÇØ¾ßÇÔ.
-		if (this != &other) {
-			for (size_t i = 0; i < m_arraySize; i++)
+	{
+		if (this != &other)
+		{
+			for (size_t i = 0; i < m_arraySize; i++) // forë¬¸ì‚¬ìš©
 			{
 				delete m_toyArray[i];
 			}
 			delete[] m_toyArray;
-		}
-		m_childName = other.m_childName;
-		m_age = other.m_age;
-		m_toyArray = new Toy * [m_arraySize];
-		for (size_t i = 0; i < m_arraySize; i++)
-		{
-			m_toyArray[i] = new const Toy (*(other.m_toyArray[i]));
+			m_arraySize = other.m_arraySize;
+			m_toyArray = new const Toy * [m_arraySize];
+			for (size_t i = 0; i < m_arraySize; i++)
+			{
+				m_toyArray[i] = new Toy(*(other.m_toyArray[i]));
+			}
+			m_age = other.m_age;
+			m_childName = other.m_childName;
 		}
 		return *this;
 	}
@@ -39,22 +46,21 @@ namespace sdds {
 
 	Child& sdds::Child::operator=(Child&& other) noexcept
 	{
-		//¹«ºêÀÇ °æ¿ì º¹»ç¸¦ ÇÒ ÇÊ¿ä¾øÀÌ ÁÖ¼Ò°ªÀ» °¡¸®Å°µµ·Ï ÇÏ´Â°ÍÀÌ±â¶§¹®¿¡ µ¿ÀûÇÒ´çÀ» ÇÒÇÊ¿ä¾øÀÌ ±×³É
-		//other·Î ¹Þ¾Æ¿Â °ªÀ» m_toyArray¿¡ ±×´ë·Î Áý¾î³Ö¾îÁÖ¸éµÈ´Ù.
-		if (this != &other) {
+		if (this != &other)
+		{
 			for (size_t i = 0; i < m_arraySize; i++)
 			{
 				delete m_toyArray[i];
 			}
 			delete[] m_toyArray;
-			m_age = other.m_age;
 			m_arraySize = other.m_arraySize;
-			m_childName = other.m_childName;
 			m_toyArray = other.m_toyArray;
-			other.m_age={};
+			m_age = other.m_age;
+			m_childName = other.m_childName;
+			other.m_toyArray = {}; // ì†Œë©¸ìžê°€ í˜¸ì¶œë ì‹œ ì´ë™í•  ê°’ì˜ ë©”ëª¨ë¦¬ê°€ ì‚­ì œë˜ì§€ì•Šë„ë¡ ìž„ì‹œê°ì²´ ê°’ nullptrë³€ê²½. 
+			other.m_age = {};
+			other.m_childName = {}; 
 			other.m_arraySize = {};
-			other.m_childName = {};
-			other.m_toyArray = {};
 		}
 		return *this;
 	}
@@ -70,14 +76,16 @@ namespace sdds {
 		*this = std::move(I);
 	}
 
+	
+
 	sdds::Child::~Child()
-	{
-		//
+	{  
 		for (size_t i = 0; i < m_arraySize; i++) {
 			delete m_toyArray[i];
 		}
 		delete[] m_toyArray;
 	}
+
 
 	size_t sdds::Child::size() const
 	{
