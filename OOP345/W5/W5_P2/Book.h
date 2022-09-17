@@ -25,15 +25,15 @@ namespace sdds {
 
 	public:
 		Book();
+		void setPrice(double price);
 		const std::string& title() const;
 		const std::string& country() const;
 		const size_t& year() const;
 		double& price();
-		void updatePrice(double price);
 		Book(const std::string& strBook);
 		template<typename T> //part2
 		void fixSpelling(T& spellChecker) {
-			spellChecker(m_description); //SpellChecker::operator()ÇÔ¼öÈ£Ãâ
+			spellChecker(m_description); //SpellChecker::operator()í•¨ìˆ˜í˜¸ì¶œ
 //ASSUMPTION: In this design, type T must have an overload of the operator() that accepts a string as a parameter.
 		}
 
