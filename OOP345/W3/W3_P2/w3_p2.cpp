@@ -1,3 +1,7 @@
+// Workshop 3 - Templates
+// 2022/01/28 - If this code works, it was created by Cornel
+//            - If it doesn't work, I don't know who wrote it.
+
 #include <iostream>
 #include <iomanip>
 #include "Collection.h"
