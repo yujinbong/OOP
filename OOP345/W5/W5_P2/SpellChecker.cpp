@@ -13,7 +13,17 @@
 
 
 namespace sdds {
-
+	size_t SpellChecker::replace_all(std::string& source, std::string what, std::string with)
+	{
+		size_t count = 0;
+		std::string::size_type pos = 0;
+		while ((pos = source.find(what, pos)) != std::string::npos) {
+			source.replace(pos, what.length(), with);
+			pos += with.length();
+			count++;
+		}
+		return count;
+	}
 
 	sdds::SpellChecker::SpellChecker(const char* filename)
 	{
@@ -23,7 +33,7 @@ namespace sdds {
 			size_t i = 0;
 			do
 			{
-				file >> m_badWords[i] >> m_goodWords[i];
+				file >> m_badWords[i] >> m_goodWords[i]; 
 				i++;
 			} while (i < 6 && file);
 		}
@@ -36,32 +46,18 @@ namespace sdds {
 		//	for (size_t i = 0; i < 6 && m_badWords[i].length() != 0; i++) {
 		//	m_replaceCounter[i]+=replace_all(text, m_badWords[i], m_goodWords[i]);
 		//}
-		//		// 1.badwords¸¦ ¸ÕÀú findÇÔ¼ö·Î Ã£Àº ÈÄ
-		//		// 2.replaceÇÔ¼ö·Î Ã£Àº m_badwords±æÀÌ¸¦ ±¸ÇÏ°í ±æÀÌ¸¸Å­ good words·Î replacÇÑ´Ù.
-		//	/*	string str = "helli world";
-		//		string bad = "i";
-		//		str.replace(str.find(bad), bad.length(), "o");
+		//		// 1.badwordsë¥¼ ë¨¼ì € findí•¨ìˆ˜ë¡œ ì°¾ì€ í›„
+		//		// 2.replaceí•¨ìˆ˜ë¡œ ì°¾ì€ m_badwordsê¸¸ì´ë¥¼ êµ¬í•˜ê³  ê¸¸ì´ë§Œí¼ good wordsë¡œ replací•œë‹¤.
+		//	/*	string str = "hello world";
+		//		string bad = "o";
+		//		str.replace(str.find(bad), bad.length(), "i");
 		//		cout << str << endl;   */
 		//	}
 		//}
 		for (size_t i = 0; i < 6 && m_badWords[i].length() != 0; i++) {
-			m_replaceCounter[i] += replace(text, m_badWords[i], m_goodWords[i]);
+			m_replaceCounter[i] += replace_all(text, m_badWords[i], m_goodWords[i]);
 		}
 	}
-
-
-	size_t SpellChecker::replace(std::string& source, std::string badwords, std::string goodwords)
-	{
-		size_t count = 0;
-		std::string::size_type pos = 0;
-		while ((pos = source.find(badwords, pos)) != std::string::npos) {
-			source.replace(pos, badwords.length(), goodwords);
-			pos += goodwords.length();
-			count++;
-		}
-		return count;
-	}
-
 
 	void sdds::SpellChecker::showStatistics(std::ostream& out) const
 	{
