@@ -12,15 +12,15 @@
 namespace sdds {
 	template<typename T>
 	class Collection {
-		std::string m_name; //¿Ö¾ÈµÅ
+		std::string m_name;
 		T* m_array{};
 		size_t m_size{};
-		void (*m_observer)(const Collection<T>&, const T&) {};// ÇÔ¼öÁö¸¸ º¯¼ö
+		void (*m_observer)(const Collection<T>&, const T&) {};// í•¨ìˆ˜ì§€ë§Œ ë³€ìˆ˜
 
-	public:
+	public:	
 		Collection(const std::string& name) :m_name(name)
 		{
-		} //¸¸¾à ¿Ï¼ºÇÏ¸é private¿¡¼­ º¯¼ö ÃÊ±âÈ­ÇØµµµÇ´ÂÁö È®ÀÎÇÏ±â
+		} //ë§Œì•½ ì™„ì„±í•˜ë©´ privateì—ì„œ ë³€ìˆ˜ ì´ˆê¸°í™”í•´ë„ë˜ëŠ”ì§€ í™•ì¸í•˜ê¸°
 		Collection(const Collection& I) = delete;
 		Collection(Collection&& I) = delete;
 		Collection& operator = (const Collection& other) = delete;
@@ -94,7 +94,7 @@ namespace sdds {
 	};
 	template<typename T>
 	std::ostream& operator<<(std::ostream& os, const Collection<T>& collection) {
-		for (size_t i = 0; i < collection.size(); i++) {
+		for (size_t i = 0; i < collection.size() ; i++) {
 			os << collection[i];
 		}
 		return os;
