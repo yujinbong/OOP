@@ -55,7 +55,7 @@ int main(int argc, char** argv)
 	std::cout << "--------------------------\n\n";
 
 	// get the books
-	sdds::Collection<sdds::Book> library("Bestsellers"); //»ı¼ºÀÚ¿¡¼­ nameÀ» ÃÊ±âÈ­ ÇØ¾ßÇÏ´Â ÀÌÀ¯***********
+	sdds::Collection<sdds::Book> library("Bestsellers");
 	if (argc == 5) {
 		// TODO: load the first 4 books from the file "argv[1]".
 		//       - read one line at a time, and pass it to the Book constructor
@@ -88,14 +88,14 @@ int main(int argc, char** argv)
 
 
 		/*
-		 ¢Ü Hey, I just met you,      ¢Ü
-		 ¢Ü And this is crazy,        ¢Ü
-		 ¢Ü But here's my number.     ¢Ü    (register the observer)
-		 ¢Ü So, if something happens, ¢Ü    (event)
-		 ¢Ü Call me, maybe?           ¢Ü    (callback)
+		 â™ª Hey, I just met you,      â™ª
+		 â™ª And this is crazy,        â™ª
+		 â™ª But here's my number.     â™ª    (register the observer)
+		 â™ª So, if something happens, â™ª    (event)
+		 â™ª Call me, maybe?           â™ª    (callback)
 		 */
 		
-		library.setObserver(bookAddedObserver); //ÀÌ°Ô ¾ÈµÅ ÀÌºÎºĞÀÌ ¿Ö ¾È¸ÔÀ»±î..>?
+		library.setObserver(bookAddedObserver); //ì´ê²Œ ì•ˆë¼ ì´ë¶€ë¶„ì´ ì™œ ì•ˆë¨¹ì„ê¹Œ..>?
 
 		// TODO: add the rest of the books from the file.
 		do
@@ -130,11 +130,11 @@ int main(int argc, char** argv)
 	//       - if the book was published in UK between 1990 and 1999 (inclussive),
 	//            multiply the price with "gbpToCadRate" and save the new price in the book object
 
-	auto fixPrice = [&](Book& book) {
+	auto fixprice = [&](Book& book) {
 		if (book.country() == "US")
-			book.updatePrice(book.price() * usdToCadRate);
+			book.setPrice(book.price() * usdToCadRate);
 		else if (book.country() == "UK" && book.year() >= 1990 && book.year() <= 1999)
-			book.updatePrice(book.price() * gbpToCadRate);
+			book.setPrice(book.price() * gbpToCadRate);
 	};
 
 
@@ -147,7 +147,7 @@ int main(int argc, char** argv)
 	// TODO (from part #1): iterate over the library and update the price of each book
 	//         using the lambda defined above.
 	for (int i = 0; i < 7; i++) {
-		fixPrice(library[i]);
+		fixprice(library[i]);
 	}
 
 
