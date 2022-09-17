@@ -1,4 +1,12 @@
-﻿#include <iomanip>
+// w4_p2.cpp - Containers
+// 2021/12/02 - Miguel
+// 2022/02/02 - Cornel
+// Professor    : Chris Szalwinski
+// Student      : Yujin Bong
+// Student ID   : 147-525-208
+// SECTIOMN     : NEE 
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+#include <iomanip>
 #include <string.h>
 
 #include "Toy.h"
@@ -15,11 +23,12 @@
 	void sdds::Toy::update(int numItems)
 	{
 		 m_numItems = numItems;
-		//std::cout << m_numItems << "****" << std::endl;
+		//std::cout << m_numItems << "엔드" << std::endl;
 	}
 
 	sdds::Toy::Toy(const std::string& toy)
 	{  
+
 		/*#ID:Name:NUM:PRICE
 		1000121 : Red Bike : 1 : 89.99*/
 		std::string temp = toy; 
