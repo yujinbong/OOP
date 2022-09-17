@@ -4,13 +4,13 @@
 #include <tgmath.h>
 namespace sdds {
 	template <typename T>
-	class Set : public Collection<T, 100>{
+	class Set : public Collection<T, 100> {
 
 	public:
 		bool add(const T& item) {
 			bool isFound = false;
 			bool result = false;
-			for (size_t i = 0; i < Collection<T,100>::size(); i++) {
+			for (size_t i = 0; i < Collection<T, 100>::size(); i++) {
 				if ((*this)[i] == item) isFound = true;
 			}
 			if (!isFound) {
