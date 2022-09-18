@@ -1,0 +1,76 @@
+Script started on Sun 13 Mar 2022 12:14:11 AM EST
+==15762== Memcheck, a memory error detector
+==15762== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==15762== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+==15762== Command: ms
+==15762== 
+Status Tester -----------------------------------------------------
+Enter following values :
+abc
+123
+-123
+12
+> abc
+Container: (Invalid Integer)
+Error #: 0
+Problem: Invalid Integer
+> 123
+Container: (ERR#1: value too high)
+Error #: 1
+Problem: value too high
+> -123
+Container: (ERR#-1: value too low)
+Error #: -1
+Problem: value too low
+> 12
+Container: (12)
+Date Tester -------------------------------------------------------
+Currect Date: 2022/03/13
+Test mode: 
+Current Date formatted (C): 2022/03/31
+Current Date unformatted (C): 220331
+Future Date formatted (F): 2022/05/25
+Future Date unformatted (F): 220525
+The current date is NOT the same as the future date
+The current date is the same as the current date
+The current date is Less than or equal to the future date
+The current date is Less than or equal to the current date
+The current date is Less than the future date
+The future date is greater than or equal to the current date
+The future date is greater than or equal to the future date
+The future date is greater than the current date
+--------------
+Assigning the Current date to the future date!
+Now both of the dates are the same!
+Enter the following:
+1- abc
+2- 12
+3- 1212
+4- 121212
+5- 221312
+6- 220229
+7- 220228
+> abc
+Invalid date value
+> 12
+ERR#2: Invalid month in date
+> 1212
+Date enterd: 2022/12/12
+> 121212
+ERR#1: Invalid year in date
+> 221312
+ERR#2: Invalid month in date
+> 220229
+ERR#3: Invalid day in date
+> 220228
+Date enterd: 2022/02/28
+==15762== 
+==15762== HEAP SUMMARY:
+==15762==     in use at exit: 0 bytes in 0 blocks
+==15762==   total heap usage: 20 allocs, 20 frees, 75,812 bytes allocated
+==15762== 
+==15762== All heap blocks were freed -- no leaks are possible
+==15762== 
+==15762== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+Script done on Sun 13 Mar 2022 12:14:49 AM EST
