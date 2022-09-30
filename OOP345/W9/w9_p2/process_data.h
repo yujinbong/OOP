@@ -1,6 +1,10 @@
 // Workshop 9 - Multi-Threading, Thread Class
-// process_data.h
+// process_data.cpp
 // 2021/1/5 - Jeevan Pant
+// Name      : Yujin Bong
+// Student ID   : 147-525-208
+// SECTIOMN     : NEE 
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops
 
 #ifndef SDDS_W9_PROCESSDATA_H
 #define SDDS_W9_PROCESSDATA_H
@@ -32,8 +36,8 @@ namespace sdds_ws9 {
 		operator bool() const;
 		int operator()(std::string, double&, double&);
 	};
-	
-	
+
+
 }
 
 
