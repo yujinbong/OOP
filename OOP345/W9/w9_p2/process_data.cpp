@@ -1,18 +1,22 @@
 // Workshop 9 - Multi-Threading, Thread Class
 // process_data.cpp
 // 2021/1/5 - Jeevan Pant
+// Name      : Yujin Bong
+// Student ID   : 147-525-208
+// SECTIOMN     : NEE 
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops
 
 
 #include "process_data.h"
 
 namespace sdds_ws9 {
-	
+
 	void computeAvgFactor(const int* arr, int size, int divisor, double& avg) {
 		avg = 0;
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < size; i++) {   //0~125000....
 			avg += arr[i];
 		}
-		avg /= divisor;
+		avg /= divisor;// 125000/500000 헷갈려.,
 	}
 
 	void computeVarFactor(const int* arr, int size, int divisor, double avg, double& var) {
@@ -35,7 +39,7 @@ namespace sdds_ws9 {
 		//       The file is binary and has the format described in the specs.
 		std::ifstream istr(filename, std::ios::binary);
 		int size;
-		istr.read(reinterpret_cast<char*>(&size), sizeof(int));
+		istr.read(reinterpret_cast<char*>(&size), sizeof(int)); //4byte!!
 		int* tempData = new int[size];
 		for (int i = 0; i < size; i++)
 		{
@@ -54,11 +58,19 @@ namespace sdds_ws9 {
 		// Following statements initialize the variables added for multi-threaded 
 		//   computation
 		num_threads = n_threads;
-		averages = new double[num_threads] {};
+		averages = new double[num_threads] {}; //averages[0]
 		variances = new double[num_threads] {};
-		p_indices = new int[num_threads + 1]{};
+		p_indices = new int[num_threads + 1]{};  //왜 +1???
 		for (int i = 0; i < num_threads + 1; i++)
 			p_indices[i] = i * (total_items / num_threads);
+
+		/*
+		0~124999
+		125000 ~ 249999
+		250000 ~ 374999
+		375000 ~499999
+		500000
+		*/
 
 	}
 	ProcessData::~ProcessData() {
@@ -81,7 +93,7 @@ namespace sdds_ws9 {
 	// Save the data into a file with filename held by the argument fname_target. 
 	// Also, read the workshop instruction.
 
-	int ProcessData::operator()(std::string filename, double& avg, double& var)
+	int ProcessData::operator()(std::string filename, double& avg, double& var) //why prototype is int?
 	{
 		std::vector<std::thread> threads1;
 		std::vector<std::thread> threads2;
@@ -90,14 +102,14 @@ namespace sdds_ws9 {
 			auto f = std::bind(computeAvgFactor, data + p_indices[i], total_items / num_threads, total_items, std::ref(averages[i]));
 			threads1.push_back(std::thread(f));
 		}
-		for (auto& thread : threads1) //향상된 for구문
+		for (auto& thread : threads1) 
 			thread.join();
 
 		for (int i = 0; i < num_threads; i++)
 		{
 			avg += averages[i];
 		}
-		
+
 		for (int i = 0; i < num_threads; i++)
 		{
 			auto f = std::bind(computeVarFactor, data + p_indices[i], total_items / num_threads, total_items, avg, std::ref(variances[i]));
@@ -110,14 +122,14 @@ namespace sdds_ws9 {
 		{
 			var += variances[i];
 		}
-		
+
 
 		std::ofstream os(filename, std::ios::binary);
 		os.write(reinterpret_cast<char*>(&total_items), sizeof(int));
 		for (int i = 0; i < total_items; i++)
 		{
 			os.write(reinterpret_cast<char*>(&data[i]), sizeof(int));
-		}		
+		}
 		return 0;
 	}
 
